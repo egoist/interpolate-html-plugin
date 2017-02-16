@@ -22,7 +22,13 @@ module.exports = {
 }
 ```
 
-Then you can use `{{ NODE_ENV }}` in your template html file.
+Then you can use `%NODE_ENV%` in your template html file, and you can use it with html-webpack-plugin's default template syntax (ejs):
+
+```js
+<% if ('%NODE_ENV%' === 'development') { %>
+do something
+<% } %>
+```
 
 ## API
 

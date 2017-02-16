@@ -35,7 +35,9 @@ class InterpolateHtmlPlugin {
       compilation.plugin('html-webpack-plugin-before-html-processing',
         (data, callback) => {
           // Run HTML through a series of user-specified string replacements.
-          data.html = vegito(data.html, this.replacements, this.options)
+          data.html = vegito(data.html, this.replacements, Object.assign({
+            delimiters: ['%', '%']
+          }, this.options))
           callback(null, data)
         }
       )
