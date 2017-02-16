@@ -31,5 +31,8 @@
   },
   "dependencies": {
     "vegito": "^1.0.0"
+  },
+  "peerDependencies": {
+    "html-webpack-plugin": "^2.28.0"
   }
 }
