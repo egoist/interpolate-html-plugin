@@ -27,7 +27,7 @@ module.exports = {
 Then you can use `%NODE_ENV%` in your template html file, and you can use it with html-webpack-plugin's default template syntax (ejs):
 
 ```js
-<% if ('%NODE_ENV%' === 'development') { %>
+<% if ('!!NODE_ENV!!' === 'development') { %>
 do something
 <% } %>
 ```
@@ -35,7 +35,7 @@ do something
 It's notable that you can use JavaScript in the interpolation:
 
 ```js
-%NODE_ENV.toUpperCase()%
+!!NODE_ENV.toUpperCase()!!
 ```
 
 For more info about this please refer to [vegito](https://github.com/egoist/vegito).
