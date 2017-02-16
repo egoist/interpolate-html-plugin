@@ -16,7 +16,7 @@
 
 // This Webpack plugin lets us interpolate custom variables into `index.html`.
 // Usage: `new InterpolateHtmlPlugin({ 'MY_VARIABLE': 42 })`
-// Then, you can use {{ MY_VARIABLE }} in your `index.html`.
+// Then, you can use %MY_VARIABLE% in your `index.html`.
 
 // It works in tandem with HtmlWebpackPlugin.
 // Learn more about creating plugins like this:
