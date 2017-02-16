@@ -2,6 +2,8 @@
 
 [![NPM version](https://img.shields.io/npm/v/interpolate-html-plugin.svg?style=flat)](https://npmjs.com/package/interpolate-html-plugin) [![NPM downloads](https://img.shields.io/npm/dm/interpolate-html-plugin.svg?style=flat)](https://npmjs.com/package/interpolate-html-plugin) [![Build Status](https://img.shields.io/circleci/project/egoist/interpolate-html-plugin/master.svg?style=flat)](https://circleci.com/gh/egoist/interpolate-html-plugin) [![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat)](https://github.com/egoist/donate)
 
+Extracted from [create-react-app](https://github.com/facebookincubator/create-react-app/blob/d1250743adc2abc41d80d566c5f817e1a16da279/packages/react-dev-utils/InterpolateHtmlPlugin.js) with some small changes.
+
 ## Install
 
 This plugin is supposed to work with [html-webpack-pluginhttps://github.com/jantimon/html-webpack-plugin/]
@@ -30,6 +32,14 @@ do something
 <% } %>
 ```
 
+It's notable that you can use JavaScript in the interpolation:
+
+```js
+%NODE_ENV.toUpperCase()%
+```
+
+For more info about this please refer to [vegito](https://github.com/egoist/vegito).
+
 ## API
 
 ### new InterpolateHtmlPlugin(data, options)
@@ -39,6 +49,14 @@ do something
 The data to use when interpolating.
 
 #### options
+
+Default:
+
+```js
+{
+  delimiters: ['%', '%']
+}
+```
 
 [vegito](https://github.com/egoist/vegito) options.
 
