@@ -1,6 +1,6 @@
 {
   "name": "interpolate-html-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "interpolate custom variables into index.html",
   "repository": {
     "url": "egoist/interpolate-html-plugin",
