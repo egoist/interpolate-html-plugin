@@ -1,0 +1,35 @@
+{
+  "name": "interpolate-html-plugin",
+  "version": "0.0.0",
+  "description": "interpolate custom variables into index.html",
+  "repository": {
+    "url": "egoist/interpolate-html-plugin",
+    "type": "git"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "xo"
+  },
+  "author": "egoist <0x142857@gmail.com>",
+  "license": "MIT",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "devDependencies": {
+    "xo": "^0.17.1"
+  },
+  "xo": {
+    "space": 2,
+    "semicolon": false,
+    "envs": [
+      "jest"
+    ]
+  },
+  "dependencies": {
+    "vegito": "^1.0.0"
+  }
+}

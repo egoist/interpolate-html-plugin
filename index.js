@@ -1,0 +1,46 @@
+'use strict'
+
+/*
+ * The code is almost copied directly from
+ * https://github.com/facebookincubator/create-react-app/blob/d1250743adc2abc41d80d566c5f817e1a16da279/packages/react-dev-utils/InterpolateHtmlPlugin.js
+ */
+
+/**
+ * Copyright (c) 2015-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+// This Webpack plugin lets us interpolate custom variables into `index.html`.
+// Usage: `new InterpolateHtmlPlugin({ 'MY_VARIABLE': 42 })`
+// Then, you can use {{ MY_VARIABLE }} in your `index.html`.
+
+// It works in tandem with HtmlWebpackPlugin.
+// Learn more about creating plugins like this:
+// https://github.com/ampedandwired/html-webpack-plugin#events
+
+const vegito = require('vegito')
+
+class InterpolateHtmlPlugin {
+  constructor(replacements, options) {
+    this.replacements = replacements
+    this.options = options
+  }
+
+  apply(compiler) {
+    compiler.plugin('compilation', compilation => {
+      compilation.plugin('html-webpack-plugin-before-html-processing',
+        (data, callback) => {
+          // Run HTML through a series of user-specified string replacements.
+          data.html = vegito(data.html, this.replacements, this.options)
+          callback(null, data)
+        }
+      )
+    })
+  }
+}
+
+module.exports = InterpolateHtmlPlugin
