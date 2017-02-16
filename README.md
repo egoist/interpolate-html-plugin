@@ -6,7 +6,7 @@ Extracted from [create-react-app](https://github.com/facebookincubator/create-re
 
 ## Install
 
-This plugin is supposed to work with [html-webpack-pluginhttps://github.com/jantimon/html-webpack-plugin/]
+This plugin is supposed to work with [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin/)
 
 ```bash
 yarn add interpolate-html-plugin --dev
