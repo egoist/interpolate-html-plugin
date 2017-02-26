@@ -22,12 +22,12 @@
 // Learn more about creating plugins like this:
 // https://github.com/ampedandwired/html-webpack-plugin#events
 
-'use strict';
-const escapeStringRegexp = require('escape-string-regexp');
+'use strict'
+const escapeStringRegexp = require('escape-string-regexp')
 
 class InterpolateHtmlPlugin {
   constructor(replacements) {
-    this.replacements = replacements;
+    this.replacements = replacements
   }
 
   apply(compiler) {
@@ -36,17 +36,17 @@ class InterpolateHtmlPlugin {
         (data, callback) => {
           // Run HTML through a series of user-specified string replacements.
           Object.keys(this.replacements).forEach(key => {
-            const value = this.replacements[key];
+            const value = this.replacements[key]
             data.html = data.html.replace(
               new RegExp('%' + escapeStringRegexp(key) + '%', 'g'),
               value
-            );
-          });
-          callback(null, data);
+            )
+          })
+          callback(null, data)
         }
-      );
-    });
+      )
+    })
   }
 }
 
-module.exports = InterpolateHtmlPlugin;
+module.exports = InterpolateHtmlPlugin
