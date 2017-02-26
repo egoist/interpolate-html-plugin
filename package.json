@@ -30,7 +30,7 @@
     ]
   },
   "dependencies": {
-    "vegito": "^1.0.0"
+    "escape-string-regexp": "^1.0.5"
   },
   "peerDependencies": {
     "html-webpack-plugin": "^2.28.0"

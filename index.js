@@ -16,18 +16,18 @@
 
 // This Webpack plugin lets us interpolate custom variables into `index.html`.
 // Usage: `new InterpolateHtmlPlugin({ 'MY_VARIABLE': 42 })`
-// Then, you can use !!MY_VARIABLE!! in your `index.html`.
+// Then, you can use %MY_VARIABLE% in your `index.html`.
 
 // It works in tandem with HtmlWebpackPlugin.
 // Learn more about creating plugins like this:
 // https://github.com/ampedandwired/html-webpack-plugin#events
 
-const vegito = require('vegito')
+'use strict';
+const escapeStringRegexp = require('escape-string-regexp');
 
 class InterpolateHtmlPlugin {
-  constructor(replacements, options) {
-    this.replacements = replacements
-    this.options = options
+  constructor(replacements) {
+    this.replacements = replacements;
   }
 
   apply(compiler) {
@@ -35,14 +35,18 @@ class InterpolateHtmlPlugin {
       compilation.plugin('html-webpack-plugin-before-html-processing',
         (data, callback) => {
           // Run HTML through a series of user-specified string replacements.
-          data.html = vegito(data.html, this.replacements, Object.assign({
-            delimiters: ['!!', '!!']
-          }, this.options))
-          callback(null, data)
+          Object.keys(this.replacements).forEach(key => {
+            const value = this.replacements[key];
+            data.html = data.html.replace(
+              new RegExp('%' + escapeStringRegexp(key) + '%', 'g'),
+              value
+            );
+          });
+          callback(null, data);
         }
-      )
-    })
+      );
+    });
   }
 }
 
-module.exports = InterpolateHtmlPlugin
+module.exports = InterpolateHtmlPlugin;
