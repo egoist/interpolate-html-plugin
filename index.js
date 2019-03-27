@@ -32,6 +32,10 @@ class InterpolateHtmlPlugin {
 
   apply(compiler) {
     compiler.hooks.compilation.tap('InterpolateHtmlPlugin', compilation => {
+      if (!compilation.hooks.htmlWebpackPluginBeforeHtmlProcessing) {
+        throw new Error('Could not find the required plugin hook. Please verify ' +
+          'that InterpolateHtmlPlugin appears after HtmlWebpackPlugin in your webpack config.')
+      }
       compilation.hooks.htmlWebpackPluginBeforeHtmlProcessing.tap(
         'InterpolateHtmlPlugin',
         data => {
