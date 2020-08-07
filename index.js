@@ -23,6 +23,7 @@
 // https://github.com/ampedandwired/html-webpack-plugin#events
 
 'use strict'
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const escapeStringRegexp = require('escape-string-regexp')
 
 class InterpolateHtmlPlugin {
@@ -32,7 +33,7 @@ class InterpolateHtmlPlugin {
 
   apply(compiler) {
     compiler.hooks.compilation.tap('InterpolateHtmlPlugin', compilation => {
-      compilation.hooks.htmlWebpackPluginBeforeHtmlProcessing.tap(
+      HtmlWebpackPlugin.getHooks(compilation).afterTemplateExecution.tap(
         'InterpolateHtmlPlugin',
         data => {
           // Run HTML through a series of user-specified string replacements.
